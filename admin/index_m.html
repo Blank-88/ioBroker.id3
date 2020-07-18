@@ -19,6 +19,7 @@
 
     <script type="text/javascript">
         // This will be called by the admin adapter when the settings page loads
+        var getAdminDevices = []; // For table "getAdminDevices"
         function load(settings, onChange) {
             // example: select elements with id=key and class=value and insert value
             if (!settings) return;
@@ -38,7 +39,9 @@
                         ;
                 }
             });
+            getAdminDevices = settings.getAdminDevices || []; // For table "getAdminDevices"
             onChange(false);
+            values2table('getAdminDevices', getAdminDevices, onChange); // For table "getAdminDevices"
             // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
             if (M) M.updateTextFields();
         }
@@ -55,10 +58,20 @@
                     obj[$this.attr('id')] = $this.val();
                 }
             });
+            obj.getAdminDevices = table2values('getAdminDevices');
             callback(obj);
         }
     </script>
-
+<style>
+    /* Title of each section */
+    .title { font-weight: bold; }
+    /* Info text of each section */
+    .info { margin-left: 1em; }
+    /* Table header */
+    .table-values th { height: 2em; background-color:#2196F3; font-size:90%; }
+    /* Table: Add button */
+    .table-button-add { margin: 0.3em 0 1em 0; }
+</style>
 </head>
 
 <body>
@@ -75,14 +88,35 @@
 
         <!-- For example columns with settings: -->
         <div class="row">
-            <div class="col s6 input-field">
-                <input type="checkbox" class="value" id="option1" />
-                <label for="option1" class="translate">option1</label>
+            <div class="col s12">
+                <p class="translate title">ownGetAdminCommands</p>
+                <p class="translate info">ownGetAdminCommands_info</p>
+                <div class="input-field col s12 m6">
+                    <input type="text" class="value" id="ownGetAdminCommands" />
+                    <label for="ownGetAdminCommands" class="translate">ownGetAdminCommands_label</label>
+                </div>
             </div>
-
-            <div class="col s6 input-field">
-                <input type="text" class="value" id="option2" />
-                <label for="option2" class="translate">option2</label>
+        </div>
+        <!-- Table for adding Windows devices -->
+        <div class="row">
+            <div id="tab-getAdminDevices" class="col s12 page">
+                <p class="translate title">windowsDevices</p>
+                <p class="translate info">windowsDevices_info</p>
+                <div class="col s12" id="getAdminDevices">
+                    <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+                    <div class="table-values-div">
+                        <table class="table-values">
+                            <thead>
+                                <tr>
+                                    <th class="header translate" data-name="deviceName">deviceName</th>
+                                    <th class="header translate" data-name="deviceIp">deviceIp</th>
+                                    <th class="header translate" data-name="active" data-type="checkbox">deviceActive</th>
+                                    <th class="header" data-buttons="delete up down"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 

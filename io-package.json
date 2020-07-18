@@ -1,0 +1,119 @@
+{
+    "common": {
+        "name": "id3",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "Iterative Dichotomiser 3",
+        "titleLang": {
+            "en": "Iterative Dichotomiser 3",
+            "de": "Iterativer Dichotomiser 3",
+            "ru": "Итеративный Дихотомизатор 3",
+            "pt": "Dicotomizador Iterativo 3",
+            "nl": "Iteratieve dichotomiser 3",
+            "fr": "Dichotomiseur itératif 3",
+            "it": "Dicotomizzatore iterativo 3",
+            "es": "Dicotomizador iterativo 3",
+            "pl": "Iteracyjny dychotomiser 3",
+            "zh-cn": "迭代二分频器3"
+        },
+        "desc": {
+            "en": "In decision tree learning, ID3 (Iterative Dichotomiser 3) is an algorithm invented by Ross Quinlan used to generate a decision tree from a dataset. ID3 is the precursor to the C4.5 algorithm, and is typically used in the machine learning and natural language processing domains.",
+            "de": "Beim Lernen von Entscheidungsbäumen ist ID3 (Iterativer Dichotomiser 3) ein von Ross Quinlan erfundener Algorithmus, der zum Generieren eines Entscheidungsbaums aus einem Datensatz verwendet wird. ",
+            "ru": "При изучении дерева решений ID3 (Iterative Dichotomiser 3) - это алгоритм, изобретенный Россом Куинланом, который используется для генерации дерева решений из набора данных. ",
+            "pt": "No aprendizado da árvore de decisão, o ID3 (Dicotomizador Iterativo 3) é um algoritmo inventado por Ross Quinlan usado para gerar uma árvore de decisão a partir de um conjunto de dados. ",
+            "nl": "Bij het leren van beslissingsbomen is ID3 (Iterative Dichotomiser 3) een door Ross Quinlan uitgevonden algoritme dat wordt gebruikt om een ​​beslissingsboom te genereren op basis van een dataset. ",
+            "fr": "Dans l'apprentissage de l'arbre de décision, ID3 (Dichotomiser itératif 3) est un algorithme inventé par Ross Quinlan utilisé pour générer un arbre de décision à partir d'un ensemble de données. ",
+            "it": "Nell'apprendimento dell'albero decisionale, ID3 (Iterative Dichotomiser 3) è un algoritmo inventato da Ross Quinlan utilizzato per generare un albero decisionale da un set di dati. ",
+            "es": "En el aprendizaje del árbol de decisión, ID3 (dicotomizador iterativo 3) es un algoritmo inventado por Ross Quinlan que se utiliza para generar un árbol de decisión a partir de un conjunto de datos. ",
+            "pl": "W uczeniu się drzewa decyzyjnego ID3 (iteracyjny dichotomiser 3) to algorytm wynaleziony przez Rossa Quinlana, używany do generowania drzewa decyzyjnego z zestawu danych. ",
+            "zh-cn": "在决策树学习中，ID3（迭代二分法器3）是Ross Quinlan发明的一种算法，用于从数据集中生成决策树。 "
+        },
+        "authors": [
+            "hannes <h.heidtmann96@gmail.com>"
+        ],
+        "keywords": [
+            "id3",
+            "adapter",
+            "machine-learning"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "id3.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Blank-88/ioBroker.id3/master/admin/id3.png",
+        "readme": "https://github.com/Blank-88/ioBroker.id3/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "logic",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "materializeTab": true,
+        "adminTab": {
+            "singleton": true,
+            "name": {
+                "en": "Iterative Dichotomiser 3",
+                "de": "Iterativer Dichotomiser 3",
+                "ru": "Итеративный Дихотомизатор 3",
+                "pt": "Dicotomizador Iterativo 3",
+                "nl": "Iteratieve dichotomiser 3",
+                "fr": "Dichotomiseur itératif 3",
+                "it": "Dicotomizzatore iterativo 3",
+                "es": "Dicotomizador iterativo 3",
+                "pl": "Iteracyjny dychotomiser 3",
+                "zh-cn": "迭代二分频器3"
+            },
+            "link": "",
+            "fa-icon": "info"
+        },
+        "supportCustoms": true,
+        "dependencies": [
+            {
+                "js-controller": ">=1.4.2"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}

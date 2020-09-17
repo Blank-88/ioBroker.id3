@@ -1,9 +1,9 @@
 {
   "name": "iobroker.id3",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "In decision tree learning, ID3 (Iterative Dichotomiser 3) is an algorithm invented by Ross Quinlan used to generate a decision tree from a dataset. ID3 is the precursor to the C4.5 algorithm, and is typically used in the machine learning and natural language processing domains.",
   "author": {
-    "name": "hannes",
+    "name": "Hannes",
     "email": "h.heidtmann96@gmail.com"
   },
   "homepage": "https://github.com/Blank-88/ioBroker.id3",

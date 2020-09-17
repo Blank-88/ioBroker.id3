@@ -82,12 +82,14 @@ For later updates, the above procedure is not necessary. Just do the following:
 ## Changelog
 
 ### 0.0.1
-* (hannes) initial release
+* (Hannes) initial release
+### 0.0.2
+* (Hannes) update algorithm
 
 ## License
 MIT License
 
-Copyright (c) 2020 hannes <h.heidtmann96@gmail.com>
+Copyright (c) 2020 Hannes <h.heidtmann96@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

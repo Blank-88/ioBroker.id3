@@ -119,7 +119,7 @@
             "_id": "database",
             "type": "enum",
             "common": {
-                "name": "Beispieldatensatz mit entsprechenden Ausprägungen",
+                "name": "Beispieldatensatz mit entsprechenden Ausprägungen"
             },
             "native": {}
         },

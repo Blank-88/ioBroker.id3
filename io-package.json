@@ -90,7 +90,7 @@
     },
     "native": {
         "option1": true,
-        "option2": "42"
+        "option2": "43"
     },
     "objects": [],
     "instanceObjects": [
@@ -107,6 +107,26 @@
             "type": "state",
             "common": {
                 "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "database",
+            "type": "enum",
+            "common": {
+                "name": "Beispieldatensatz mit entsprechenden Ausprägungen",
+            },
+            "native": {}
+        },
+        {
+            "_id": "database.inputs",
+            "type": "object",
+            "common": {
                 "name": "Device or service connected",
                 "type": "boolean",
                 "read": true,

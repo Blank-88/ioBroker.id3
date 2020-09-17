@@ -35,13 +35,13 @@ class Id3 extends utils.Adapter {
         // Initialize your adapter here
 
         // Reset the connection indicator during startup
-        this.setState("info.connection", false, true);
+        this.setStateAsync("info.connection", { val: true, ack: true });
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
         this.log.info("config option1: " + this.config.option1);
         this.log.info("config option2: " + this.config.option2);
-        this.log.info("Hello World. We all gonna die.")
+        this.log.info("Hello World. We all gonna die!")
 
         /*
         For every state in the system there has to be also an object of type state

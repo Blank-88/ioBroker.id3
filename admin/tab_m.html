@@ -10,68 +10,124 @@
     <script type="text/javascript" src="../../lib/js/materialize.js"></script>
 
     <script type="text/javascript" src="words.js"></script>
+    <script type="text/javascript">
+        // This will be called by the admin adapter when the settings page loads
+        var getAdminDevices = []; // For table "getAdminDevices"
+        function load(settings, onChange) {
+            // example: select elements with id=key and class=value and insert value
+            if (!settings) return;
+            $('.value').each(function () {
+                var $key = $(this);
+                var id = $key.attr('id');
+                if ($key.attr('type') === 'checkbox') {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.prop('checked', settings[id])
+                        .on('change', () => onChange())
+                        ;
+                } else {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.val(settings[id])
+                        .on('change', () => onChange())
+                        .on('keyup', () => onChange())
+                        ;
+                }
+            });
+            getAdminDevices = settings.getAdminDevices || []; // For table "getAdminDevices"
+            onChange(false);
+            values2table('getAdminDevices', getAdminDevices, onChange); // For table "getAdminDevices"
+            // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+            if (M) M.updateTextFields();
+        }
+
+        // This will be called by the admin adapter when the user presses the save button
+        function save(callback) {
+            // example: select elements with class=value and build settings object
+            var obj = {};
+            $('.value').each(function () {
+                var $this = $(this);
+                if ($this.attr('type') === 'checkbox') {
+                    obj[$this.attr('id')] = $this.prop('checked');
+                } else {
+                    obj[$this.attr('id')] = $this.val();
+                }
+            });
+            obj.getAdminDevices = table2values('getAdminDevices');
+            callback(obj);
+        }
+    </script>
+    <script type="text/javascript" src="../ID3.js"></script>
     <style>
+    /* Title of each section */
+    .title { font-weight: bold; }
+    /* Info text of each section */
+    .info { margin-left: 1em; }
+    /* Table header */
+    .table-values th { height: 2em; background-color:#2196F3; font-size:90%; }
+    /* Table: Add button */
+    .table-button-add { margin: 0.3em 0 1em 0; }
+
         .m .col .select-wrapper + label {
             top: -26px;
         }
         .m span{
             font-size: 0.9em;
         }
+    /* Title of each section */
+    .title { font-weight: bold; }
+    /* Info text of each section */
+    .info { margin-left: 1em; }
+    /* Table header */
+    .table-values th { height: 2em; background-color:#2196F3; font-size:90%; }
+    /* Table: Add button */
+    .table-button-add { margin: 0.3em 0 1em 0; }
     </style>
 </head>
 
 <body>
 
     <div class="m adapter-container">
+
         <div class="row">
-            <!-- Forms are the standard way to receive user inputted data.
-             Learn more http://materializecss.com/forms.html-->
-            <div class="row">
-                <div class="input-field col s6">
-                    <img src="id3.png" class="logo">
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s3">
-                    <input class="value" id="test1" type="checkbox" />
-                    <label for="test1" class="translate">test1</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 m6 l4">
-                    <input class="value" id="myText" type="text">
-                    <label for="myText">Text</label>
-                    <span class="translate">Descriptions of the input field</span>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                    <input type="number" class="value" id="test2" />
-                    <label for="test2" class="translate">Number</label>
-                    <!-- Important: label must come directly after input. Label is important. -->
-                    <span class="translate">test2</span>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                    <input id="email" type="email" class="value validate">
-                    <label for="email" data-error="wrong" data-success="right">Email</label>
-                    <!--  You can add custom validation messages by adding either data-error or data-success attributes to your input field labels.-->
-                    <span class="translate">Verification input</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 m4">
-                    <select class="value" id="mySelect">
-                        <option value="auto" class="translate">Auto</option>
-                        <option value="manual" class="translate">Manual</option>
-                    </select>
-                    <label for="mySelect" class="translate">My select</label>
-                    <!-- Important: label must come directly after select. Label is important. -->
-                </div>
-                <div class="input-field col s12 m8">
-                    <i class="material-icons prefix">mode_edit</i>
-                    <textarea id="Textarea" class="value materialize-textarea"></textarea>
-                    <label for="Textarea">Message</label>
-                </div>
+            <div class="col s12 m4 l2">
+                <img src="id3.png" class="logo">
             </div>
         </div>
+
+        <!-- Put your content here -->
+
+        <!-- For example columns with settings: -->
+         <div class="row">
+         <div class="col s12">
+             <p class="translate title">ownGetAdminCommands</p>
+             <p class="translate info">ownGetAdminCommands_info</p>
+             <div class="input-field col s12 m6">
+                 <input type="text" class="value" id="ownGetAdminCommands" />
+                 <label for="ownGetAdminCommands" class="translate">ownGetAdminCommands_label</label>
+             </div>
+         </div>
+     </div>
+     <!-- Table for adding Windows devices -->
+     <div class="row">
+         <div id="tab-getAdminDevices" class="col s12 page">
+             <p class="translate title">windowsDevices</p>
+             <p class="translate info">windowsDevices_info</p>
+             <div class="col s12" id="getAdminDevices">
+                 <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+                 <div class="table-values-div">
+                     <table class="table-values">
+                         <thead>
+                             <tr>
+                                 <th class="header translate" data-name="deviceName">deviceName</th>
+                                 <th class="header translate" data-name="deviceIp">deviceIp</th>
+                                 <th class="header translate" data-name="active" data-type="checkbox">deviceActive</th>
+                                 <th class="header" data-buttons="delete up down"></th>
+                             </tr>
+                         </thead>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
     </div>
 
 </body>
